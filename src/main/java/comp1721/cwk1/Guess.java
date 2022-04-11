@@ -1,7 +1,6 @@
 package comp1721.cwk1;
 
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -43,7 +42,7 @@ public class Guess {
   };
   // TODO: Implement readFromPlayer()
   public void readFromPlayer(){
-    System.out.println("Enter guess("+guessNumber+"/6):");
+    System.out.print("Enter guess("+guessNumber+"/6):");
     chosenWord = INPUT.next();
   };
   // TODO: Implement compareWith(), giving it a String parameter and String return type
@@ -66,7 +65,6 @@ public class Guess {
         result +=" \033[0m";
       }
     }
-
     return result;
   };
   // TODO: Implement matches(), giving it a String parameter and boolean return type
