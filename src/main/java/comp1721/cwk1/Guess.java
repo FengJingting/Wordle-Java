@@ -25,7 +25,7 @@ public class Guess {
       throw new GameException("Invalid  guessNumber");
     }
 
-    if(word.length()!=5){
+    if(word.length()==5){
       chosenWord = word.toUpperCase(Locale.ROOT);
     }else{
       throw new GameException("Invalid chosenWord");
@@ -43,7 +43,7 @@ public class Guess {
   // TODO: Implement readFromPlayer()
   public void readFromPlayer(){
     System.out.print("Enter guess("+guessNumber+"/6):");
-    chosenWord = INPUT.next();
+    chosenWord = INPUT.next().toUpperCase(Locale.ROOT);
   };
   // TODO: Implement compareWith(), giving it a String parameter and String return type
   public String compareWith(String target) {
