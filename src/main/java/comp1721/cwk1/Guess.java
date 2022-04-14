@@ -1,5 +1,7 @@
 package comp1721.cwk1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -64,6 +66,56 @@ public class Guess {
         result += cc;
         result +=" \033[0m";
       }
+    }
+    return result;
+  };
+  // add suffix
+  public String addSuffix(List result){
+    String out = "";
+    for(int i = 1; i <= result.size(); i++ ){
+//      System.out.print(result.get(i-1));
+      if(result.get(i-1).equals(1)){
+        out+=result.get(i-1);
+        out+="st ";
+      }else if(result.get(i-1).equals(2)){
+        out+=result.get(i-1);
+        out+="nd ";
+      }else if(result.get(i-1).equals(3)){
+        out+=result.get(i-1);
+        out+="rd ";
+      }else{
+        out+=result.get(i-1);
+        out+="th ";
+      }
+    }
+    return out;
+  };
+  // TODO: Implement compareWithAC(), giving it a String parameter and String return type
+  public String compareWithAC(String target) {
+    List resultSame = new ArrayList();
+    List resultExits = new ArrayList();
+    String result = "";
+    for (int i = 0; i <= 4; i++) {
+      char ct = target.charAt(i);
+      char cc = chosenWord.charAt(i);
+      if (cc == ct) {
+        resultSame.add(i+1);
+      } else if (target.indexOf(cc) == -1) {
+        continue;
+      } else {
+        resultExits.add(i+1);
+      }
+    }
+    result += addSuffix(resultSame);
+    if(resultSame.size()>0){
+      result+="perfect!";
+    }
+    result += addSuffix(resultExits);
+    if(resultExits.size()>0){
+      result+="correct but in wrong place!";
+    }
+    if(result.length()==0){
+      result+="You haven't got the correct character!";
     }
     return result;
   };

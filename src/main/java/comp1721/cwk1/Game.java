@@ -71,6 +71,30 @@ public class Game {
         winOrnot = 0;
         System.out.println("Nope-Better luck next time!");
     };
+    // TODO: Implement playAC() method
+    public void playAC(){
+        for(int i=1;i<=6;i++){
+            Guess guess = new Guess(i);
+            guess.readFromPlayer();
+            choseWordList+=guess.compareWithAC(target);
+            choseWordList+="\n";
+            System.out.println(guess.compareWithAC(target));
+            if(guess.matches(target)){
+                if(i==1){
+                    System.out.println("Superb - Got it in one!");
+                }else if(i==6){
+                    System.out.println("That was a close call!");
+                }else{
+                    System.out.println("Well done!");
+                }
+                guessTime = i;
+                winOrnot = 1;
+                return;
+            }
+        }
+        winOrnot = 0;
+        System.out.println("Nope-Better luck next time!");
+    };
     // TODO: Implement save() method, with a String parameter
     public void save(String filename) throws IOException {
         File file = new File(filename);
