@@ -14,9 +14,10 @@ repositories {
 }
 
 dependencies {
+  implementation fileTree(dir:'lib',includes:['*.jar'])
   testImplementation (
     'org.junit.jupiter:junit-jupiter-api:5.8.2',
-    'org.hamcrest:hamcrest:2.2'
+    'org.hamcrest:hamcrest:2.2',
   )
   testRuntimeOnly (
     'org.junit.jupiter:junit-jupiter-engine:5.8.2'
@@ -71,33 +72,19 @@ application {
   }
 }
 
-//task runFixed(type: JavaExec) {
-//  group 'application'
-//  description 'Runs the game specified as a command line argument.'
-//  standardInput = System.in
-//  classpath = sourceSets.main.runtimeClasspath
-//  mainClass = 'comp1721.cwk1.Wordle'
-//  args '-a','100'
-//  doFirst {
-//    println "\nRunning with 100 as a command line argument"
-//    println "(Target word for Game 100 is BASIC)\n"
-//    println "----------------------------------------------------------------"
-//  }
-//}
 task runFixed(type: JavaExec) {
   group 'application'
   description 'Runs the game specified as a command line argument.'
   standardInput = System.in
   classpath = sourceSets.main.runtimeClasspath
-  mainClass = 'comp1721.cwk1.WordleAC'
-  args '-a'
+  mainClass = 'comp1721.cwk1.Wordle'
+  args '-a','100'
   doFirst {
     println "\nRunning with 100 as a command line argument"
     println "(Target word for Game 100 is BASIC)\n"
     println "----------------------------------------------------------------"
   }
 }
-
 //Generation of Zip file for submission
 
 task submission(type: Zip) {
