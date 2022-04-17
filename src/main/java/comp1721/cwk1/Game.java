@@ -31,7 +31,7 @@ public class Game {
         // new wordlist,get the target word
         WordList wordList =  new WordList(filename);
         target = wordList.getWord(gameNumber).substring(0, 5);
-//        System.out.println(target);
+        System.out.println(target);
     };
     // TODO: Implement constructor with int and String parameters
     public Game(int num,String filename) throws IOException {
@@ -47,7 +47,7 @@ public class Game {
         // new wordlist,get the target word
         WordList wordList =  new WordList(filename);
         target = wordList.getWord(gameNumber).substring(0, 5);
-//        System.out.println(target);
+        System.out.println(target);
     };
     // TODO: Implement play() method
     public void play(){
@@ -88,7 +88,14 @@ public class Game {
         for(int i=1;i<=6;i++){
             Guess guess = new Guess(i);
             // print out the guess result in ac version
-            guess.readFromPlayer();
+            System.out.print("Enter guess("+i+"/6):");
+            Scanner word = new Scanner(System.in);
+            String words = word.next();
+            if(words.isEmpty()) {
+                guess = new Guess(i);
+            }else{
+                guess = new Guess(i,words);
+            }
             choseWordList+=guess.compareWithAC(target);
             choseWordList+="\n";
             System.out.println(guess.compareWithAC(target));

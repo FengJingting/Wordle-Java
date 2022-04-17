@@ -31,6 +31,13 @@ public class Guess {
 
     // if the word length does not equal to 5,throw an GameException
     if(word.length()==5){
+      for(int i=0;i<5;i++){
+        if( (word.charAt(i) >= 'a' && word.charAt(i) <= 'z') || (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z')){
+          continue;
+        }else{
+          throw new GameException("Invalid  chosenWord!");
+        }
+      }
       chosenWord = word.toUpperCase(Locale.ROOT);
     }else{
       throw new GameException("Invalid chosenWord!\n");
@@ -47,9 +54,16 @@ public class Guess {
   // TODO: Implement readFromPlayer()
   public void readFromPlayer(){
     System.out.print("Enter guess("+guessNumber+"/6):");
-    String words =  INPUT.next();
-    if(words.length()==5){
-      chosenWord = words.toUpperCase(Locale.ROOT);
+    String word =  INPUT.next();
+    if(word.length()==5){
+      for(int i=0;i<5;i++){
+        if( (word.charAt(i) >= 'a' && word.charAt(i) <= 'z') || (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z')){
+          continue;
+        }else{
+          throw new GameException("Invalid  chosenWord!");
+        }
+      }
+      chosenWord = word.toUpperCase(Locale.ROOT);
     }else{
       throw new GameException("Invalid chosenWord!\n");
     }
